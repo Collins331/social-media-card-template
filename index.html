@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6f5f0" />
+  <title>pebble — your online corner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="pebble home">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span>pebble</span>
+      </a>
+      <div class="topbar-actions">
+        <button class="icon-button" id="helpButton" aria-label="Open help" title="Help">?</button>
+        <button class="profile-chip" id="profileButton" aria-label="Open profile menu">
+          <span class="mini-avatar">AM</span>
+          <span class="profile-name">Alex Morgan</span>
+          <span class="chevron">⌄</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="editor-panel" aria-labelledby="pageTitle">
+        <div class="editor-heading">
+          <div>
+            <p class="eyebrow">PERSONAL SPACE <span>•</span> 01</p>
+            <h1 id="pageTitle">Make your mark.</h1>
+            <p class="intro">A home for your internet corner.<br />Keep it close, share it everywhere.</p>
+          </div>
+          <button class="share-button" id="shareButton"><span>↗</span> Share page</button>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Page editing sections">
+          <button class="tab active" role="tab" aria-selected="true" data-tab="links">Links <span class="count">04</span></button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="appearance">Appearance</button>
+        </div>
+
+        <div class="tab-panel" id="linksPanel" role="tabpanel">
+          <div class="section-label-row">
+            <span class="section-label">YOUR LINKS</span>
+            <span class="section-hint">Drag to reorder</span>
+          </div>
+          <div class="link-list" id="linkList"></div>
+          <button class="add-link-button" id="addLinkButton"><span>＋</span> Add a link</button>
+
+          <div class="profile-section">
+            <div class="section-label-row">
+              <span class="section-label">PROFILE</span>
+              <span class="section-hint">Shown on your page</span>
+            </div>
+            <div class="profile-form">
+              <div class="avatar-upload" id="avatarUpload" title="Change profile image"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=160&q=80" alt="Alex Morgan" /><span>↗</span></div>
+              <label class="field"><span>Display name</span><input id="nameInput" value="Alex Morgan" /></label>
+              <label class="field"><span>Bio</span><textarea id="bioInput" rows="2">Creative director, maker &amp; sometimes photographer.</textarea></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel hidden" id="appearancePanel" role="tabpanel">
+          <div class="section-label-row"><span class="section-label">PAGE STYLE</span><span class="section-hint">Set the tone</span></div>
+          <div class="theme-grid" id="themeGrid">
+            <button class="theme-swatch selected" data-theme="paper"><span class="swatch paper"></span><strong>Paper</strong><small>Soft &amp; warm</small></button>
+            <button class="theme-swatch" data-theme="ink"><span class="swatch ink"></span><strong>Ink</strong><small>Quiet &amp; crisp</small></button>
+            <button class="theme-swatch" data-theme="citrus"><span class="swatch citrus"></span><strong>Citrus</strong><small>Bright &amp; zesty</small></button>
+            <button class="theme-swatch" data-theme="blush"><span class="swatch blush"></span><strong>Blush</strong><small>Soft &amp; playful</small></button>
+          </div>
+          <div class="section-label-row appearance-label"><span class="section-label">BUTTON STYLE</span></div>
+          <div class="segmented-control" id="buttonStyleControl"><button class="selected" data-style="solid">Solid</button><button data-style="outline">Outline</button><button data-style="minimal">Minimal</button></div>
+        </div>
+
+        <footer class="editor-footer"><span class="status-dot"></span> All changes saved <span class="footer-divider">|</span> <span class="mono">pebble.to/alexm</span></footer>
+      </section>
+
+      <aside class="preview-panel" aria-label="Live public profile preview">
+        <div class="preview-head"><span class="live-indicator"><i></i> LIVE PREVIEW</span><span class="device-label">MOBILE VIEW</span></div>
+        <div class="phone-frame">
+          <div class="phone-screen" id="phoneScreen">
+            <div class="profile-card">
+              <button class="preview-menu" aria-label="More profile options">•••</button>
+              <img class="preview-avatar" id="previewAvatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=240&q=85" alt="Alex Morgan" />
+              <h2 id="previewName">Alex Morgan <span class="verified">✓</span></h2>
+              <p class="preview-handle">@alexmorgan</p>
+              <p class="preview-bio" id="previewBio">Creative director, maker &amp; sometimes photographer.</p>
+              <div class="preview-links" id="previewLinks"></div>
+              <div class="preview-socials"><span>◎</span><span>in</span><span>𝕏</span><span>◉</span></div>
+              <div class="pebble-signature"><span class="brand-mark small"><span></span><span></span><span></span></span> pebble</div>
+            </div>
+          </div>
+        </div>
+          <div class="preview-foot"><span>↗</span> Your page is ready to share <button class="download-button" id="downloadCard"><span>↓</span> Download card</button></div>
+      </aside>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-backdrop hidden" id="helpModal"><div class="modal"><button class="modal-close" id="closeHelp" aria-label="Close help">×</button><p class="eyebrow">A LITTLE HELP</p><h2>Your corner, your rules.</h2><p>pebble keeps your important links together in one tiny, memorable page. Add a link, choose a look, then share your page anywhere.</p><button class="share-button" id="modalDone">Got it</button></div></div>
+</body>
+</html>
